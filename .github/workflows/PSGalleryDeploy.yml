@@ -13,7 +13,7 @@ jobs:
     - name: Deploy
       env:
         PSGALLERY_DEPLOY_KEY: ${{ secrets.PSGALLERY_DEPLOY_KEY }}
-        GITHUB_WORKSPACE: ${{ keys.GITHUB_WORKSPACE }}
+        GITHUB_WORKSPACE: ${{ GITHUB_WORKSPACE }}
       run: |
         $ModuleName = "OfficeAddinManager"
         $ModuleFolderPath = $env:PSModulePath.Split(";") | select -first 1
