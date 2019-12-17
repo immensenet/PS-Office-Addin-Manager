@@ -21,4 +21,5 @@ jobs:
         Copy-Item @(".\$ModuleName.psm1",".\$ModuleName.psd1") -Destination $ModuleFolderToPublish
         Publish-Module -Name $ModuleName -NuGetApiKey $env:PSGALLERY_DEPLOY_KEY -Repository PSGallery
         Remove-Item $ModuleFolderToPublish -Force
+      shell: pwsh
 
