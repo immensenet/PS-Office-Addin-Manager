@@ -2,15 +2,11 @@
   <Version>2.1</Version>
   <FileID>9701da57-2d5e-4774-b735-096a6cd8bffb</FileID>
   <ProjectType>1</ProjectType>
-  <Folders>
-    <Folder>OfficeAddinManager</Folder>
-  </Folders>
+  <Folders />
   <Files>
     <File Build="2">OfficeAddinManager.psd1</File>
     <File Build="0" ExportFunctions="False">OfficeAddinManager.psm1</File>
     <File Build="2" Shared="True" ReferenceFunction="Invoke-Test-Module_ps1" ExportFunctions="False">Test-Module.ps1</File>
-    <File Build="2" ExportFunctions="False">OfficeAddinManager\OfficeAddins.psm1</File>
-    <File Build="2">OfficeAddinManager\OfficeAddins.psd1</File>
   </Files>
   <StartupScript>C:\Users\dkattan\Source\Repos\PS-Office-Addin-Manager\Test-Module.ps1</StartupScript>
 </Project>
