@@ -23,6 +23,7 @@ jobs:
         Copy-Item (Join-Path $env:GITHUB_WORKSPACE "$ModuleName.psm1") -Destination $ModuleFolderToPublish
         Copy-Item (Join-Path $env:GITHUB_WORKSPACE "$ModuleName.psd1") -Destination $ModuleFolderToPublish        
         Publish-Module -Name $ModuleName -NuGetApiKey $env:PSGALLERY_DEPLOY_KEY -Repository PSGallery
-        Remove-Item $ModuleFolderToPublish -Force -Confirm:$false
+        Remove-Item $env:GITHUB_WORKSPACE -Force -Confirm:$false
+        Remove-Item $ModuleFolderToPublish -Force -Confirm:$false        
       shell: pwsh
 
