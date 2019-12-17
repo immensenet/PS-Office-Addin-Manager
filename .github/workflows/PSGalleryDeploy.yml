@@ -12,8 +12,7 @@ jobs:
       uses: actions/checkout@v2
     - name: Deploy
       env:
-        PSGALLERY_DEPLOY_KEY: ${{ secrets.PSGALLERY_DEPLOY_KEY }}
-        GITHUB_WORKSPACE: ${{ GITHUB_WORKSPACE }}
+        PSGALLERY_DEPLOY_KEY: ${{ secrets.PSGALLERY_DEPLOY_KEY }}        
       run: |
         $ModuleName = "OfficeAddinManager"
         $ModuleFolderPath = $env:PSModulePath.Split(";") | select -first 1
