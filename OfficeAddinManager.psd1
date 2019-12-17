@@ -16,10 +16,10 @@
 @{
 	
 	# Script module or binary module file associated with this manifest
-	ModuleToProcess = 'OfficeAddinManager.psm1'
+	RootModule = 'OfficeAddinManager.psm1'
 	
 	# Version number of this module.
-	ModuleVersion = '1.0.0.5'
+	ModuleVersion = '1.0.0.6'
 	
 	# ID used to uniquely identify this module
 	GUID = '9701da57-2d5e-4774-b735-096a6cd8bffb'
@@ -93,7 +93,7 @@
 	# List of all files packaged with this module
 	FileList = @('OfficeAddinManager.psd1','OfficeAddinManager.psm1')
 	
-	# Private data to pass to the module specified in ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
+	# Private data to pass to the module specified in RootModule. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
 	PrivateData = @{
 		
 		#Support for PowerShellGet galleries.
