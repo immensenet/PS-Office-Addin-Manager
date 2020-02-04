@@ -284,8 +284,7 @@ function Get-ResiliencyDisabledDataFromByteArray
 		$nameBytes = $reader.ReadBytes($nameLength);
 		$name = $null
 		$name = [System.Text.Encoding]::Unicode.GetString($nameBytes);
-		$RetVal | Add-Member -NotePropertyName ProgID -NotePropertyValue $name.Replace("`0", "")
-		$RetVal | Add-Member -NotePropertyName RegistryProperty -NotePropertyValue $ItemProperty
+		$RetVal | Add-Member -NotePropertyName ProgID -NotePropertyValue $name.Replace("`0", "")		
 		$RetVal
 	}
 	catch
@@ -320,7 +319,9 @@ function Get-ResiliencyDisabledItem
 		if ($Bytes)
 		{
 			$Retval = Get-ResiliencyDisabledDataFromByteArray -Bytes $Bytes
-			
+			$ItemProperty = $Item | Get-ItemProperty -Name $PropertyName
+            $ItemPropertyPipelineable = [pscustomobject]@{"Name"=$PropertyName;"Path"=$ItemProperty.PSPath}            
+            $RetVal | Add-Member -NotePropertyName RegistryProperty -NotePropertyValue $ItemPropertyPipelineable
 			if (!$DLLpath -and !$ProgID -or (($DLLPath -and $RetVal.DllPath -like $DLLPath) -or ($RetVal.ProgID -and $ProgID -and $ProgID -like $RetVal.ProgID)))
 			{
 				Write-Output $RetVal
@@ -561,7 +562,7 @@ function Set-OfficeAddin
 		[boolean]$DoNotDisableList = $null,
 		[switch]$ClearResiliencyData,
 		[ValidateSet('Unmanaged', 'AlwaysEnabled', 'AlwaysDisabled', 'UserDefined')]
-		[string]$ManagedBehavior,
+		[string]$ManagedBehavior = $null,
 		[boolean]$LoadAtStartup,
 		[switch]$Force
 	)
@@ -619,7 +620,7 @@ function Set-OfficeAddin
 			$DisabledItem = Get-ResiliencyDisabledItem -DLLPath $AddinCustomObj.Location -ProgID $ProgID -UserRegistryMountPoint $PSUserRegistryMountPoint -OfficeProduct $OfficeProduct
 			if ($DisabledItem -and ($PSCmdlet.ShouldProcess("ShouldProcess?") -or $Force))
 			{
-				Remove-ItemProperty -Path $DisabledItem.RegistryProperty
+				$DisabledItem.RegistryProperty | Remove-ItemProperty
 			}
 			Write-Verbose "Clearing UserAddinCrashLogs"
 			$CrashingItem = Get-ResiliencyCrashingItem -DLLPath $AddinCustomObj.Location -UserRegistryMountPoint $PSUserRegistryMountPoint -OfficeProduct $OfficeProduct
@@ -680,7 +681,7 @@ function Set-OfficeAddin
 					}
 				}
 			}
-			if ($null -ne $ManagedBehavior)
+			if ($ManagedBehavior)
 			{
 				$ProductReleaseIds = Get-ItemPropertyValue -Path "HKLM:\SOFTWARE\Microsoft\Office\ClickToRun\Configuration" -Name ProductReleaseIds
 				if ($ManagedBehavior -ne "Unmanaged")
@@ -718,7 +719,7 @@ function Set-OfficeAddin
 				Close-RegistryHive -MountPoint $PSUserRegistryMountPoint
 			}
 		}
-		End
+		else
 		{
 			Write-Verbose ('[{0}] Confirm={1} ConfirmPreference={2} WhatIf={3} WhatIfPreference={4}' -f $MyInvocation.MyCommand, $Confirm, $ConfirmPreference, $WhatIf, $WhatIfPreference)
 		}
