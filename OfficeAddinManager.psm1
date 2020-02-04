@@ -322,10 +322,19 @@ function Get-ResiliencyDisabledItem
 			$ItemProperty = $Item | Get-ItemProperty -Name $PropertyName
             $ItemPropertyPipelineable = [pscustomobject]@{"Name"=$PropertyName;"Path"=$ItemProperty.PSPath}            
             $RetVal | Add-Member -NotePropertyName RegistryProperty -NotePropertyValue $ItemPropertyPipelineable
-			if (!$DLLpath -and !$ProgID -or (($DLLPath -and $RetVal.DllPath -like $DLLPath) -or ($RetVal.ProgID -and $ProgID -and $ProgID -like $RetVal.ProgID)))
+
+			if (!$DLLpath -and !$ProgID)
 			{
 				Write-Output $RetVal
 			}
+            elseif($RetVal.ProgID -and $ProgID -and ($ProgID -like $RetVal.ProgID))
+            {
+				Write-Output $RetVal
+            }
+            elseif(!$ProgID -and $DLLPath -and ($RetVal.DllPath -like $DLLPath))
+            {
+				Write-Output $RetVal
+            }
 		}
 	}
 }
