@@ -661,7 +661,7 @@ function Set-OfficeAddin
 			Write-Verbose "Clearing UserAddinResiliencyNotificationReminderAddinData"
 			if ($PSCmdlet.ShouldProcess("ShouldProcess?") -or $Force)
 			{
-				Remove-ItemProperty -Path $OfficeRegistryPaths.UserAddinResiliencyNotificationReminderAddinData -Name $ProgID -Force -ErrorAction SilentlyContinue
+				Remove-ItemProperty -Path $OfficeRegistryPaths.UserAddinResiliencyNotificationReminderAddinData -Name "$ProgID*" -Force -ErrorAction SilentlyContinue
 			}
 			
 			if ($null -ne $LoadAtStartup)
