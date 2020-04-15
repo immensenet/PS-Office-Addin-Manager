@@ -568,7 +568,7 @@ function Set-OfficeAddin
 		[Parameter(Mandatory = $true,
 				   ValueFromPipelineByPropertyName = $true)]
 		[string]$UserSID,
-		[boolean]$DoNotDisableList = $null,
+		[boolean]$DoNotDisableList,
 		[switch]$ClearResiliencyData,
 		[ValidateSet('Unmanaged', 'AlwaysEnabled', 'AlwaysDisabled', 'UserDefined')]
 		[string]$ManagedBehavior = $null,
@@ -609,9 +609,10 @@ function Set-OfficeAddin
 			$UnloadHive = $true
 			Open-RegistryHive -HivePath $UserProfile.UserHivePath -MountPoint $PSUserRegistryMountPoint
 		}
-		if ($null -ne $DoNotDisableList)
+		if ($DoNotDisableList.IsPresent)
 		{
-			Write-Verbose "Adding $ProgID to UserAddinResiliencyDoNotDisableList"
+			$DoNotDisableList.GetType()
+			Write-Host "Adding $ProgID to UserAddinResiliencyDoNotDisableList"
 			if ($DoNotDisableList -and ($PSCmdlet.ShouldProcess("ShouldProcess?") -or $Force))
 			{
 				New-Item -Path $OfficeRegistryPaths.UserAddinResiliencyDoNotDisableList -Force | Out-Null

@@ -19,7 +19,7 @@
 	ModuleToProcess = 'OfficeAddinManager.psm1'
 	
 	# Version number of this module.
-	ModuleVersion = '1.0.0.8'
+	ModuleVersion = '1.0.1.0'
 	
 	# ID used to uniquely identify this module
 	GUID = '9701da57-2d5e-4774-b735-096a6cd8bffb'
@@ -31,7 +31,7 @@
 	CompanyName = 'Immense Networks'
 	
 	# Copyright statement for this module
-	Copyright = '(c) 2019. All rights reserved.'
+	Copyright = '(c) 2020. All rights reserved.'
 	
 	# Description of the functionality provided by this module
 	Description = 'Module for managing Outlook and Office addins, specifically those disabled by Office Resiliency for slow performance.'
