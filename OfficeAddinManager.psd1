@@ -19,7 +19,7 @@
 	ModuleToProcess = 'OfficeAddinManager.psm1'
 	
 	# Version number of this module.
-	ModuleVersion = '1.0.1.0'
+	ModuleVersion = '1.0.1.1'
 	
 	# ID used to uniquely identify this module
 	GUID = '9701da57-2d5e-4774-b735-096a6cd8bffb'

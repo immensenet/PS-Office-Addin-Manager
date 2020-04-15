@@ -1,4 +1,4 @@
-# PS-Office-Addin-Manager
+# Office Addin Manager
 PowerShell Module for managing Office Addins, specifically those disabled by resiliency
 
 ## Installation
@@ -10,7 +10,7 @@ Install-Module OfficeAddinManager
 
 ### Get-OfficeAddin
 
-#### Get Outlook Addins
+#### Outlook Addins
 ```
 Get-OfficeAddin -OfficeProduct Outlook
 ```
@@ -154,7 +154,7 @@ UserName           : DESKTOP-8HG67X\Darren
 OfficeProduct      : Outlook
 ProgID             : G2MAddin.OutlookAddin
 FriendlyName       : GoToMeeting Outlook COM Addin
-Location           : C:\Users\dkattan\AppData\Local\GoToMeeting\16786\G2MOutlookAddin.dll
+Location           : C:\Users\Darren\AppData\Local\GoToMeeting\16786\G2MOutlookAddin.dll
 Managed            : Unmanaged
 InDisabledList     : False
 InCrashingList     : False
@@ -169,7 +169,7 @@ UserName           : DESKTOP-8HG67X\Darren
 OfficeProduct      : Outlook
 ProgID             : TeamsAddin.FastConnect
 FriendlyName       : Microsoft Teams Meeting Add-in for Microsoft Office
-Location           : C:\Users\dkattan\AppData\Local\Microsoft\TeamsMeetingAddin\1.0.20031.2\x86\Microsoft.Teams.AddinLo
+Location           : C:\Users\Darren\AppData\Local\Microsoft\TeamsMeetingAddin\1.0.20031.2\x86\Microsoft.Teams.AddinLo
                      ader.dll
 Managed            : Unmanaged
 InDisabledList     : False
@@ -278,7 +278,7 @@ LoadOnDemand       : False
 LoadOnce           : False
 ```
 
-#### Get Specific Outlook Addin
+#### Specific Outlook Addin
 ```
 Get-OfficeAddin -OfficeProduct Outlook -ProgID G2MAddin.OutlookAddin
 ```
@@ -287,7 +287,7 @@ UserName           : DESKTOP-8HG67X\Darren
 OfficeProduct      : Outlook
 ProgID             : G2MAddin.OutlookAddin
 FriendlyName       : GoToMeeting Outlook COM Addin
-Location           : C:\Users\dkattan\AppData\Local\GoToMeeting\16786\G2MOutlookAddin.dll
+Location           : C:\Users\Darren\AppData\Local\GoToMeeting\16786\G2MOutlookAddin.dll
 Managed            : Unmanaged
 InDisabledList     : False
 InCrashingList     : False
